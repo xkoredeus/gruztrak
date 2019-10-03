@@ -1,0 +1,556 @@
+@import "../fonts/fonts.css"
+$dark: #2F2F2F
+$yel: #EF8F01
+// $lgr: #E5E5E5
+$lgr: #F6F6F6
+$gr: #EAEAEA
+$dgr: #848484
+$tr: transparent
+
+$l-reg: 'Lato-Regular'
+$l-black: 'Lato-Black'
+$l-med: 'Lato-Medium'
+$l-bold: 'Lato-Bold'
+
+@mixin ct
+  background-position: 50% 50%
+  background-size: contain
+  background-repeat: no-repeat
+@mixin cv
+  background-position: 50% 50%
+  background-size: cover
+  background-repeat: no-repeat
+@mixin ovl
+  content: ''
+  position: absolute
+  width: 100%
+  height: 100%
+  left: 0
+  top: 0
+@mixin ease
+  transition: .4s all ease
+// media-query "max-width"
+@mixin r($width)
+  @media only screen and (max-width: $width + "px")
+    @content
+html
+  &.fixed
+    overflow: hidden
+body
+  scroll-behavior: smooth
+  background-color: #fff
+  font-family: $l-reg
+  color: $dark
+  font-size: 16px
+  line-height: 1.4
+  position: relative
+  -webkit-font-smoothing: antialiased
+h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection, p::selection, a::selection, span::selection, div::selection, img::selection, mark::selection, ul::selection, li::selection
+  color           : #fff
+  background-color : $dark
+::selection
+  color           : #fff
+  background-color : $dark
+a, a:hover, a:active, a:focus,
+button, input, button:hover, button:active, button:focus,
+input:focus, input:active, .btn, .btn:after, select:focus, select:active
+  text-decoration: none
+  outline: none
+  +ease
+a
+  color: $dark
+  &:hover
+    color: $yel
+button
+  border: $tr
+  background: none
+option
+  color: $dark
+textarea
+  resize:none
+  overflow: hidden
+  &::placeholder
+    color: $dark
+button
+  color: $dark
+input,
+textarea,
+select
+  color: $dark
+  font-family: $l-reg
+  font-size: 16px
+  padding: 12px 30px
+  border-radius: 2px
+  border: 1px solid #E0E0E0
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="tel"]::placeholder
+  color: $dark
+input:focus,
+textarea:focus,
+input:active,
+textarea:active
+  // background: #ffff
+  color: $dark
+  box-shadow: inset 0px 0px 5px 1px $yel
+  outline: none
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button 
+  -webkit-appearance: none
+input[type="number"]
+  -moz-appearance: textfield
+  appearance: textfield
+.select__wrp
+  border: 1px solid $gr
+  border-radius: 3px
+  position: relative
+  display: flex
+  background-color: $tr
+  &::before
+    content: ''
+    position: absolute
+    width: 13px
+    height: 7px
+    background: url('../img/icon__select-arr.svg') no-repeat 50% 50% / contain
+    top: 50%
+    transform: translateY(-50%)
+    right: 9px
+    +ease
+  select
+    width: 100%
+    background-color: $tr
+    border: none
+    padding: 8px 40px 8px 12px
+    position: relative
+    appearance: none
+    option
+      width: 100%
+  &:hover
+    &::before
+      transform: translateY(-50%) scale(.9)
+.quantity
+  position: relative
+  max-width: 129px
+  input
+    width: 100%
+  &-num
+    // max-width: 110px
+    text-align: center
+  &-minus,
+  &-plus
+    position: absolute
+    height: 50%
+    top: 50%
+    transform: translate(0,-50%)
+    font-family: $l-reg
+    font-size: 32px
+    line-height: 0
+    border: none
+    display: flex
+    justify-content: center
+    border-radius: 50%
+    align-items: center
+    &:hover
+      opacity: .7
+  &-minus
+    left: 15px
+    color: #3498DB
+  &-plus
+    right: 15px
+    color: $yel
+.tabs
+  &__list
+    list-style-type: none
+    padding: 0
+    margin: 0
+    +r(600)
+      display: none
+    li
+      padding: 10px 15px
+      +ease
+      cursor: pointer
+      &.active
+        background-color: $yel
+        color: #fff
+  &-acc
+    &__btn
+      display: none
+      width: 100%
+      padding: 12px 25px
+      background-color: $lgr
+      text-align: center
+      cursor: pointer
+      border: 1px solid #fff
+      +r(600)
+        display: block
+      &.active
+        background-color: $yel
+        color: #fff
+    &__cnt
+      transition: unset
+.checkbox
+  cursor: pointer
+  position: relative
+  margin-bottom: 0
+  input[type="checkbox"],
+  input[type="radio"]
+    position: absolute
+    left: 0
+    z-index: 1
+    opacity: 0
+    width: 100%
+    height: 20px
+    cursor: pointer
+  .checkbox__text
+    font-size: 14px
+    position: relative
+    padding-left: 30px
+    cursor: pointer
+    width: 100%
+    height: 30px
+    display: block
+    &::before
+      content: ''
+      position: absolute
+      top: 0px
+      left: -2px
+      width: 20px
+      height: 20px
+      border-radius: 2px
+      border: 1px solid #c3c2c2
+      background: #fff
+    &::after
+      content: ''
+      position: absolute
+      top: 50%
+      margin-top: -11px
+      left: 2px
+      width: 12px
+      height: 12px
+      background-color: $yel
+      border-radius: 2px
+      opacity: 0
+      transform: scale(0)
+      transition: 0.2s
+    a
+      text-decoration: underline
+      position: relative
+      z-index: 2
+  input[type="checkbox"]:checked + .checkbox__text:after,
+  input[type="radio"]:checked + .checkbox__text:after
+    opacity: 1
+    transform: scale(1)
+  input[type="checkbox"]:checked + .checkbox__text:before,
+  input[type="radio"]:checked + .checkbox__text:before
+    background-color: #fff
+    border: 1px solid $yel
+  input[type="checkbox"]:focus + .checkbox__text:before
+   box-shadow: inset 0 1px 2px rgba(0,0,0,.2), 0 0 0 1px rgba(49, 179, 237, 0.61)
+.img-fluid
+  max-width: 100%
+  height: auto
+.shd
+  +ease
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+  &:hover
+    box-shadow: 0px 30px 40px rgba(0, 80, 147, 0.25)
+.b
+  font-family: $l-bold
+.m
+  font-family: $l-med
+.blc
+  font-family: $l-black
+.tac
+  text-align: center
+.tal
+  text-align: left !important
+.und
+  text-decoration: underline
+.upp
+  text-transform: uppercase
+.ttn
+  text-transform: none !important
+.curp
+  cursor: pointer
+.lgr
+  color: $lgr
+.dgr
+  color: $dgr
+.wt
+  color: #fff
+a.wt
+  color: #fff
+  &:hover
+    color: $yel
+.yel
+  color: $yel
+a.yel
+  color: $yel
+  &:hover
+    color: #fff
+.fz30
+  font-size: 30px
+.fz22
+  font-size: 22px
+.fz18
+  font-size: 18px
+.fz15
+  font-size: 15px
+.fz13
+  font-size: 13px
+.btn
+  font-size: 16px
+  font-family: $l-bold
+  color: #fff
+  text-align: center
+  text-transform: uppercase
+  padding: 12px 40px
+  background: $yel
+  display: inline-block
+  border: none
+  border-radius: 3px
+  position: relative
+  outline: none
+  +ease
+  &:hover
+    color: #fff
+    opacity: .9
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.15)
+  &_submit
+    display: flex
+    padding: 0
+    border: none
+    overflow: hidden
+    &__price
+      height: 45px
+      font-family: $l-bold
+      color: $dark
+      padding: 10px 15px
+      text-align: center
+      border: 1px solid $lgr
+      border-top-left-radius: 3px
+      border-bottom-left-radius: 3px
+      position: relative
+      &::before
+        +ovl
+        height: 123%
+        top: -3%
+        background-color: $yel
+        +ease
+        opacity: 0
+        transform: translateX(100%)
+      &::after
+        content: ''
+        position: absolute
+        right: 0
+        top: 50%
+        transform: translateY(-50%)
+        width: 1px
+        height: 30px
+        background-color: $dark
+        +ease
+      span
+        position: relative
+    &__svg
+      height: 45px
+      padding: 10px
+      fill: #fff
+      background-color: $yel
+      border: 1px solid $yel
+      border-top-right-radius: 3px
+      border-bottom-right-radius: 3px
+      position: relative
+    &:hover
+      .btn_submit__price
+        color: #fff
+        border-color: $yel
+        &::before
+          opacity: 1
+          transform: translateX(0%)
+        &::after
+          background-color: #fff
+  &_top
+    position: fixed
+    display: none
+    right: 35px
+    bottom: 35px
+    width: 40px
+    height: 40px
+    z-index: 3
+    span
+      position: relative
+      width: 40px
+      height: 40px
+      border: 1px solid #fff
+      border-radius: 4px
+      background-color: $dark
+      transform: rotate(45deg)
+      display: block
+      +ease
+      svg
+        position: absolute
+        left: 50%
+        top: 50%
+        transform: translate(-50%,-50%) rotate(-45deg)
+        +ease
+    &:hover
+      span
+        transform: rotate(90deg)
+        svg
+          transform: translate(-50%,-50%) rotate(-90deg)
+  &_gr
+    background-color: #fff
+    border: 1px solid $lgr
+    color: $lgr
+    &:hover
+      color: #fff
+      background-color: $yel
+      border-color: $yel
+.popup__container
+  padding: 43px 15px 0
+  background-color: transparent
+  +r(1200)
+    padding-left: 0
+    padding-right: 0
+  *,
+  *::before,
+  *::after
+    transition: .3s all ease
+  .fancybox-close-small
+    top: 0
+    right: 2px
+    padding: 0
+    svg
+      path
+        fill: #fff
+  .popup__wrp
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    justify-content: center
+    position: relative
+    max-width: 770px
+  .popup
+    width: 100%
+    height: 100%
+    position: relative
+    z-index: 2
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: flex-start
+    background-color: #fff
+    color: $dark
+    padding: 30px 25px 30px
+    text-align: center
+    &_call
+      &__wrp
+        max-width: 632px
+      &__col
+        max-width: 350px
+        width: 100%
+.owl-carousel
+  .owl-item
+    img
+      width: auto !important
+  .owl-dots
+    position: absolute
+    width: 100%
+    display: flex
+    justify-content: center
+    bottom: 0
+    button.owl-dot
+      width: 13px
+      height: 13px
+      border: 2.5px solid $yel
+      border-radius: 50%
+      background-color: transparent
+      position: relative
+      // transform: scale(1)
+      &:not(:last-child)
+        margin-right: 10px
+      &.active
+        // transform: scale(.8)
+        border-color: transparent
+        background-color: $yel
+  .owl-nav
+    button.owl-prev,
+    button.owl-next
+      width: 31px
+      height: 31px
+      position: absolute
+      bottom: 50%
+      margin-bottom: -25.5px
+      border-radius: 50%
+      padding: 0
+      background-color: $tr
+      border: 1.5px solid $dark
+      display: flex
+      justify-content: center
+      align-items: center
+      +ease
+      svg
+        max-width: 17px
+        max-height: 17px
+        height: auto
+        fill: none
+        stroke: $dark
+        +ease
+    button.owl-prev:hover,
+    button.owl-next:hover
+      background-color: $yel
+      border-color: $yel
+      svg
+        stroke: #fff
+    button.owl-prev.disabled,
+    button.owl-next.disabled,
+    button.owl-prev.disabled:hover,
+    button.owl-next.disabled:hover
+      opacity: 0
+      cursor: default
+      
+    button.owl-prev
+      left: 0
+    button.owl-next
+      right: 0
+.section
+  &_inner
+    padding: 60px 0
+    +r(1200)
+      padding: 30px 0
+  &__ttl
+    font-size: 34px
+    font-family: $l-bold
+    letter-spacing: .5px
+    margin-bottom: 35px
+    text-align: center
+    +r(1200)
+      font-size: 20px
+      margin-bottom: 20px
+.banner
+  position: relative
+  color: #fff
+  +cv
+  background-image: url('../img/banner__bg_1.jpg')
+  &::before
+    +ovl
+    background-color: #161616
+    opacity: .9
+  .container
+    position: relative
+  &__ttl
+    font-size: 35px
+  &__info
+    font-size: 18px
+    span:first-child
+      color: #848484
+    &-mail
+      position: relative
+      &::after
+        content: ''
+        position: absolute
+        width: 100%
+        height: 1px
+        background-color: $yel
+        left: 0
+        bottom: -4px

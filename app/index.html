@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#6232ad">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <title>New Project</title>
+  <link rel="stylesheet" href="css/libs.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/media.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-xl-1">suka</div>
+        <div class="col-xl-8">
+          <nav class="header__nav">
+            <a href="#" class="header__nav-link">О нас</a>
+            <a href="#" class="header__nav-link">Сервис</a>
+            <a href="#" class="header__nav-link">Лизинг</a>
+            <a href="#" class="header__nav-link">Купить</a>
+            <a href="#" class="header__nav-link">Партнеры</a>
+            <a href="#" class="header__nav-link">Контакты</a>
+          </nav>
+        </div>
+        <div class="col-xl-3">
+          <button type="button" class="btn">Заказать звонок</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class="section_inner banner">
+    <div class="container">
+      <div class="row">
+        <div class="offset-sm-1"></div>
+        <div class="col-sm-11">
+          <div class="banner__slider">
+            <div class="banner__slider-item">
+              <div class="row">
+                <div class="col-xl-7">
+                  <div class="banner__ttl"><span class="blc">Каждому купившему автокран</span> <span class="b yel">спутниковая система слежения с&nbsp;установкой в&nbsp;ПОДАРОК</span></div>
+                </div>
+                <div class="col-xl-5">
+                  <div class="d-flex flex-column align-items-end pt-2">
+                    <div class="banner__info mb-1">
+                      <span>Звоните</span>
+                      <a href="tel:74956688198" class="wt blc">+7 (495) 668-81-98</a>
+                    </div>
+                    <div class="banner__info mb-1">
+                      <span>Время работы:</span>
+                      <span class="wt">пн-пт 08:00 до 18:00</span>
+                    </div>
+                    <div class="banner__info mb-1">
+                      <a href="mailto:aiv@gruztrak.ru" class="wt banner__info-mail">aiv@gruztrak.ru</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div id="popup_call" class="popup__container" style="display:none">
+    <div  class="popup__wrp popup_call__wrp">
+      <form action="[[~[[*id]]]]" method="post" class="popup">
+        <h3 class="popup__ttl">Оставьте заявку</h3>
+        <div class="input__wrp input__wrp_name">
+          <input type="text" class="form__input" name="popup_call__name" placeholder="Ваше имя" required="">
+        </div>
+        <div class="input__wrp input__wrp_tel">
+          <input type="tel" class="form__input" name="popup_call__tel" placeholder="Телефон" required="">
+        </div>
+        <div class="input__wrp input__wrp_mail">
+          <input type="email" class="form__input" name="popup_call__email" placeholder="E-mail">
+        </div>
+        <input type="submit" class="btn" name="popup_call__sumbit" value="Заказать">
+        <div class="popup__policy">
+          Нажимая кнопку "Отправить", вы соглашаетесь с <a href="#" class="form__policy-link">политикой конфиденциальности</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="js/libs.min.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+</html>
