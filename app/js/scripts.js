@@ -1,28 +1,28 @@
 $(function() {
-  $('.main-slider__cnt').owlCarousel({
-      nav: true,
-      items: 1,
-      loop: false,
-      dots: true,
-      navText: ["<img src='img/slider__arrow_prev.png'>", "<img src='img/slider__arrow_next.png'>"],
-      responsive : {
-        0   : {
-            items: 1
-        },
-        380 : {
-            items: 1
-        },
-        480 : {
-            items: 1
-        },
-        768 : {
-            items: 3
-        },
-        1040 : {
-            items: 4
-        }
-      }
-  });
+  // $('.main-slider__cnt').owlCarousel({
+  //     nav: true,
+  //     items: 1,
+  //     loop: false,
+  //     dots: true,
+  //     navText: ["<img src='img/slider__arrow_prev.png'>", "<img src='img/slider__arrow_next.png'>"],
+  //     responsive : {
+  //       0   : {
+  //           items: 1
+  //       },
+  //       380 : {
+  //           items: 1
+  //       },
+  //       480 : {
+  //           items: 1
+  //       },
+  //       768 : {
+  //           items: 3
+  //       },
+  //       1040 : {
+  //           items: 4
+  //       }
+  //     }
+  // });
   //card slider
   var sync1 = $('.banner__bg');
   var sync2 = $('.banner__slider');
@@ -155,8 +155,55 @@ $(function() {
       }
     }
   });
-  //Закрываем AjaxForm popup после успешной отправки
-  // $(document).on('af_complete', function(event,res) {
-  //   if(res.success) parent.$.fancybox.close();
-  // });
+  //map
+  $(document).ready(function () {
+    var myMap;
+
+    ymaps.ready(init);
+    function init(){
+      myMap = new ymaps.Map("map", {
+          center: [59.83663456, 30.37202250],
+          globalPixelCenter: [54,35],
+          zoom: 10,
+          scrollZoom: false,
+          controls: ["typeSelector"],
+      });
+      // myMap.behaviors.disable('drag');
+      myMap.behaviors.disable('scrollZoom'); 
+      var placemarks = [
+          {
+              coords: [59.86663456, 30.47202250],
+              icon: 'img/baloon.svg',
+              icon_size: [50, 50],
+              icon_offset: [-25, -25], // -50% ширины, -100% высоты от точки привязки (левый верхний угол)
+          },
+          {
+              coords: [59.82384206, 30.52547200],
+              icon: 'img/baloon.svg',
+              icon_size: [50, 50],
+              icon_offset: [-25, -25], // -50% ширины, -100% высоты от точки привязки (левый верхний угол)
+          },
+          {
+              coords: [60.54950006, 30.21664900],
+              icon: 'img/baloon.svg',
+              icon_size: [50, 50],
+              icon_offset: [-25, -25], // -50% ширины, -100% высоты от точки привязки (левый верхний угол)
+          },
+      ];
+
+      placemarks.forEach(function(item){
+          var obj = new ymaps.Placemark(
+              item.coords,
+              {},
+              {
+                  iconLayout: 'default#image',
+                  iconImageHref: item.icon,
+                  iconImageSize: item.icon_size,
+                  iconImageOffset: item.icon_offset,
+              }
+          );
+          myMap.geoObjects.add(obj);
+      });
+    };
+  });
 });
