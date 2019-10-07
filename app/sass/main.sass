@@ -1,7 +1,6 @@
 @import "../fonts/fonts.css"
 $dark: #2F2F2F
 $yel: #EF8F01
-// $lgr: #E5E5E5
 $lgr: #F6F6F6
 $gr: #EAEAEA
 $dgr: #848484
@@ -41,7 +40,7 @@ body
   background-color: #fff
   font-family: $l-reg
   color: $dark
-  font-size: 16px
+  font-size: 14px
   line-height: 1.4
   position: relative
   -webkit-font-smoothing: antialiased
@@ -67,21 +66,23 @@ button
 option
   color: $dark
 textarea
-  resize:none
+  resize: none !important
   overflow: hidden
   &::placeholder
     color: $dark
-button
-  color: $dark
 input,
 textarea,
 select
   color: $dark
   font-family: $l-reg
-  font-size: 16px
+  font-size: 14px
   padding: 12px 30px
-  border-radius: 2px
-  border: 1px solid #E0E0E0
+  border: none
+  border-bottom: 1px solid $dark
+  transition: all .4s ease
+// input,
+// select
+//  border: 1px solid #fff
 input[type="text"]::placeholder,
 input[type="email"]::placeholder,
 input[type="tel"]::placeholder
@@ -90,9 +91,8 @@ input:focus,
 textarea:focus,
 input:active,
 textarea:active
-  // background: #ffff
   color: $dark
-  box-shadow: inset 0px 0px 5px 1px $yel
+  border-color: $yel
   outline: none
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button 
@@ -102,7 +102,6 @@ input[type="number"]
   appearance: textfield
 .select__wrp
   border: 1px solid $gr
-  border-radius: 3px
   position: relative
   display: flex
   background-color: $tr
@@ -128,6 +127,40 @@ input[type="number"]
   &:hover
     &::before
       transform: translateY(-50%) scale(.9)
+.input__wrp
+  position: relative
+  input,
+  select,
+  textarea
+    width: 100%
+    padding-left: 25px
+    background-color: $tr
+  &::before
+    content: ''
+    position: absolute
+    left: 0
+    top: 50%
+    transform: translateY(-50%)
+    margin-top: -1px
+    width: 14px
+    height: 17px
+    background-position: 50% 50%
+    background-size: contain
+    background-repeat: no-repeat
+  &_name
+    &::before
+      background-image: url('../img/icon__form-name.svg')
+  &_mail
+    &::before
+      background-image: url('../img/icon__form-mail.svg')
+  &_tel
+    &::before
+      background-image: url('../img/icon__form-tel.svg')
+  &_text
+    &::before
+      top: 14px
+      transform: translateY(0)
+      background-image: url('../img/icon__form-mes.svg')
 .quantity
   position: relative
   max-width: 129px
@@ -288,14 +321,14 @@ a.yel
   color: $yel
   &:hover
     color: #fff
-.fz30
-  font-size: 30px
-.fz22
-  font-size: 22px
+.fz25
+  font-size: 25px
 .fz18
   font-size: 18px
 .fz15
   font-size: 15px
+.fz14
+  font-size: 14px
 .fz13
   font-size: 13px
 .btn
@@ -316,59 +349,6 @@ a.yel
     color: #fff
     opacity: .9
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.15)
-  &_submit
-    display: flex
-    padding: 0
-    border: none
-    overflow: hidden
-    &__price
-      height: 45px
-      font-family: $l-bold
-      color: $dark
-      padding: 10px 15px
-      text-align: center
-      border: 1px solid $lgr
-      border-top-left-radius: 3px
-      border-bottom-left-radius: 3px
-      position: relative
-      &::before
-        +ovl
-        height: 123%
-        top: -3%
-        background-color: $yel
-        +ease
-        opacity: 0
-        transform: translateX(100%)
-      &::after
-        content: ''
-        position: absolute
-        right: 0
-        top: 50%
-        transform: translateY(-50%)
-        width: 1px
-        height: 30px
-        background-color: $dark
-        +ease
-      span
-        position: relative
-    &__svg
-      height: 45px
-      padding: 10px
-      fill: #fff
-      background-color: $yel
-      border: 1px solid $yel
-      border-top-right-radius: 3px
-      border-bottom-right-radius: 3px
-      position: relative
-    &:hover
-      .btn_submit__price
-        color: #fff
-        border-color: $yel
-        &::before
-          opacity: 1
-          transform: translateX(0%)
-        &::after
-          background-color: #fff
   &_top
     position: fixed
     display: none
@@ -400,8 +380,8 @@ a.yel
           transform: translate(-50%,-50%) rotate(-90deg)
   &_gr
     background-color: #fff
-    border: 1px solid $lgr
-    color: $lgr
+    border: 1px solid $dgr
+    color: $dark
     &:hover
       color: #fff
       background-color: $yel
@@ -519,11 +499,10 @@ a.yel
     +r(1200)
       padding: 30px 0
   &__ttl
-    font-size: 34px
-    font-family: $l-bold
+    font-size: 30px
+    font-family: $l-black
     letter-spacing: .5px
     margin-bottom: 35px
-    text-align: center
     +r(1200)
       font-size: 20px
       margin-bottom: 20px
@@ -665,3 +644,252 @@ a.yel
         bottom: 20px
         left: 50%
         transform: translateX(-50%)
+    .owl-dots
+      bottom: 240px
+      left: 30px
+      justify-content: flex-start
+.crane
+  min-height: 100vh
+  display: flex
+  align-items: center
+  overflow: hidden
+  &_best
+    background-color: #f6f6f6
+  &_sixteen
+    background-color: #eaeaea
+    .crane__slider
+      &::after
+        background-color: #eaeaea
+  &_twentyfive
+    background-color: #f6f6f6
+  &_thirtyfive
+    background-color: #eaeaea
+    .crane__slider
+      &::after
+        background-color: #eaeaea
+  &_fourty
+    background-color: #f6f6f6
+  &__slider
+    &::after
+      content: ''
+      position: absolute
+      right: 100%
+      top: 0
+      width: 800%
+      height: 100%
+      background-color: #f6f6f6
+    .owl
+      &-stage-outer
+        overflow: visible
+      &-nav
+        button
+          &.owl
+            &-prev
+              border-color: $dgr
+              top: -72px
+              +r(1200)
+                top: -60px
+              left: auto
+              right: 45px
+              svg
+                stroke: $dgr
+            &-next
+              border-color: $dgr
+              top: -72px
+              +r(1200)
+                top: -60px
+              svg
+                stroke: $dgr
+  &__item
+    color: $dark
+    background: #FFFFFF
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25)
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    padding-top: 15px
+    +ease
+    &-bot
+      padding: 15px
+    .btn
+      padding-left: 15px
+      padding-right: 15px
+    &-wrp
+      // min-height: 440px
+      display: flex
+      align-items: flex-end
+      max-width: 270px
+      margin-left: auto
+      margin-right: auto
+      padding-top: 10px
+      padding-right: 4px
+      padding-bottom: 20px
+      padding-left: 4px
+      &:hover
+        .crane
+          &__item
+            box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.25)
+          &__img
+            &-wrp
+              // height: 195px
+            &_main
+              opacity: 0
+              transform: scale(.5)
+            &_add
+              opacity: 1
+              transform: scale(1)
+  &__img
+    &-wrp
+      width: 100%
+      height: 110px
+      +ease
+      position: relative
+    &_main,
+    &_add
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+      height: 100%
+      +ct
+      +ease
+    &_add
+      height: 200%
+      top: -100%
+      opacity: 0
+      transform: scale(.5)
+.about
+  min-height: 100vh
+  display: flex
+  align-items: center
+  &__list
+    max-width: 770px
+  &__item
+    &-in
+      max-width: 170px
+      margin-left: auto
+      margin-right: auto
+      display: flex
+      flex-direction: column
+      align-items: center
+      text-align: center
+      padding: 20px 10px
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3)
+      background-color: $lgr
+      border-radius: 2px
+      +ease
+      &:hover
+        background-color: #fff
+    &-img
+      width: 100%
+      height: 60px
+      +ct
+.serv
+  min-height: 100vh
+  display: flex
+  align-items: center
+  background-color: $lgr
+  &__list
+    max-width: 770px
+  &__item
+    min-height: 250px
+    &-in
+      position: relative
+      color: #fff
+      max-width: 170px
+      height: 100%
+      margin-left: auto
+      margin-right: auto
+      display: flex
+      flex-direction: column
+      align-items: center
+      text-align: center
+      padding: 60px 10px 15px
+      overflow: hidden
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3)
+      border-radius: 2px
+      +cv
+      &::before
+        +ovl
+        background-color: $dark
+        opacity: .8
+        +ease
+      &>*
+        position: relative
+      &:hover
+        box-shadow: 0px 30px 30px rgba(134, 80, 0, 0.25)
+        &::before
+          background-color: $yel
+    &-img
+      width: 100%
+      height: 60px
+      +ct
+.lis
+  color: #fff
+  min-height: 100vh
+  display: flex
+  align-items: center
+  position: relative
+  +cv
+  background-image: url('../img/lis__bg.jpg')
+  &::before
+    +ovl
+    background-color: #161616
+    opacity: .91
+  .container
+    position: relative
+  &__list
+    max-width: 770px
+  &__item
+    &-in
+      color: $dark
+      max-width: 170px
+      margin-left: auto
+      margin-right: auto
+      display: flex
+      flex-direction: column
+      align-items: center
+      text-align: center
+      padding: 20px 10px
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3)
+      background-color: $lgr
+      border-radius: 2px
+      +ease
+      &:hover
+        background-color: #fff
+    &-img
+      width: 100%
+      height: 60px
+      +ct
+  .input__wrp
+    input
+      color: $gr
+      border-bottom-color: $gr
+      &:focus
+        border-bottom-color: $yel
+      &::placeholder
+        color: $gr
+.part
+  min-height: 100vh
+  display: flex
+  align-items: center
+  &__item
+    width: 170px
+    height: 140px
+    display: flex
+    justify-content: center
+    align-items: center
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3)
+    background-color: $lgr
+    border-radius: 2px
+    +ease
+    margin-bottom: 20px
+    &:hover
+      background-color: #fff
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4)
+.feed
+  color: $dark
+  min-height: 100vh
+  display: flex
+  align-items: center
+  background-color: $lgr

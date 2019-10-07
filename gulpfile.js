@@ -43,7 +43,8 @@ gulp.task('css-libs', function() {
   return gulp.src([
     'app/libs/bootstrap/bootstrap.min.css',
     'app/libs/fancybox/jquery.fancybox.min.css',
-    'app/libs/owl.carousel/owl.carousel.min.css'
+    'app/libs/owl.carousel/owl.carousel.min.css',
+    'app/libs/animate/animate.min.css'
     ]) // Выбираем файлы для минификации
     .pipe(concat('libs.min.css'))
     .pipe(cssnano()) // Сжимаем
