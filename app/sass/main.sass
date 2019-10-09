@@ -325,14 +325,24 @@ a.yel
     color: #fff
 .fz25
   font-size: 25px
+  +r(1200)
+    font-size: 18px
 .fz18
   font-size: 18px
-.fz15
-  font-size: 15px
+  +r(1200)
+    font-size: 16px
 .fz16
   font-size: 16px
+  +r(1200)
+    font-size: 14px
+.fz15
+  font-size: 15px
+  +r(1200)
+    font-size: 14px
 .fz13
   font-size: 13px
+  +r(1200)
+    font-size: 12px
 .btn
   font-size: 13px
   font-family: $l-black
@@ -347,39 +357,13 @@ a.yel
   position: relative
   outline: none
   +ease
+  +r(1200)
+    font-size: 12px
+    padding: 10px
   &:hover
     color: #fff
     opacity: .9
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.15)
-  &_top
-    position: fixed
-    display: none
-    right: 35px
-    bottom: 35px
-    width: 40px
-    height: 40px
-    z-index: 3
-    span
-      position: relative
-      width: 40px
-      height: 40px
-      border: 1px solid #fff
-      border-radius: 4px
-      background-color: $dark
-      transform: rotate(45deg)
-      display: block
-      +ease
-      svg
-        position: absolute
-        left: 50%
-        top: 50%
-        transform: translate(-50%,-50%) rotate(-45deg)
-        +ease
-    &:hover
-      span
-        transform: rotate(90deg)
-        svg
-          transform: translate(-50%,-50%) rotate(-90deg)
   &_gr
     background-color: #fff
     border: 1px solid $dgr
@@ -411,7 +395,7 @@ a.yel
     align-items: center
     justify-content: center
     position: relative
-    max-width: 770px
+    max-width: 600px
   .popup
     width: 100%
     height: 100%
@@ -427,9 +411,7 @@ a.yel
     text-align: center
     &_call
       &__wrp
-        max-width: 632px
-      &__col
-        max-width: 350px
+        max-width: 500px
         width: 100%
 .owl-carousel
   .owl-item
@@ -509,15 +491,24 @@ a.yel
       font-size: 20px
       margin-bottom: 20px
 .header
-  &__container
-    position: fixed
-    top: 10px
-    left: 50%
-    transform: translateX(-50%)
-    z-index: 3
+  position: fixed
+  width: 100%
+  padding: 10px 0
+  z-index: 3
+  +ease
+  +r(1200)
+    padding: 0
+  &.sticky
+    background-color: #161616c2
   &__logo
     position: relative
     min-height: 63px
+    display: flex
+    align-items: center
+    +r(1200)
+      min-height: 50px
+      img
+        max-height: 35px
     &::after
       content: ''
       position: absolute
@@ -528,6 +519,8 @@ a.yel
       background-color: $dgr
       transform: translateY(-50%)
       opacity: .5
+      +r(1200)
+        display: none
     &:hover
       opacity: .8
   &__nav
@@ -548,10 +541,81 @@ a.yel
           width: 100%
       &:not(:last-child)
         margin-right: 15px
+    +r(1200)
+      display: flex
+      flex-direction: column
+      align-items: center
+      text-align: center
+      padding-left: 0
+      margin-top: 30px
+      &-link
+        margin-right: 0 !important
+        margin-bottom: 8px
+      &-wrp
+        width: 100%
+        min-height: calc(100% - 50px)
+        overflow-y: scroll
+        position: fixed
+        top: 50px
+        right: -100%
+        border-top: 1px solid $dgr
+        background-color: #161616f0
+        +ease
+  &__tel
+    +r(1200)
+      &-wrp
+        text-align: right
+    +r(1200)
+      font-size: 13px
   .btn
     width: 100%
     padding-left: 15px
     padding-right: 15px
+    +r(1200)
+      padding: 8px 10px
+  &__hamburger
+    position: relative
+    width: 100%
+    height: 20px
+    display: flex
+    justify-content: flex-end
+    align-items: center
+    padding: 0
+    +ease
+    span
+      width: 100%
+      max-width: 24px
+      height: 2px
+      background-color: $yel
+      +ease
+    &::before,
+    &::after
+      content: ''
+      position: absolute
+      width: 24px
+      height: 2px
+      background-color: $yel
+      right: 0
+      +ease
+    &::before
+      top: -1px
+    &::after
+      bottom: -1px
+.menu-open
+  overflow: hidden
+  .header
+    background-color: #161616f0
+    &__hamburger
+      span
+        transform: scale(.5)
+        opacity: 0
+      &::before
+        transform: translateY(10px) rotate(45deg)
+      &::after
+        transform: translateY(-10px) rotate(-45deg)
+    &__nav
+      &-wrp
+        right: 0
 .sidebar
   &__soc
     position: fixed
@@ -560,6 +624,8 @@ a.yel
     transform: translateY(-50%)
     margin-left: calc(-1110px/2)
     z-index: 3
+    +r(1200)
+      display: none
     &-link
       width: 44px
       height: 44px
@@ -576,37 +642,21 @@ a.yel
         border-color: $yel
         svg
           fill: #fff
-  &__count
-    position: fixed
-    left: 50%
-    margin-left: calc(-1110px/2)
-    bottom: 20px
-    z-index: 3
-    &_all
-      color: $dgr
-      position: relative
-      margin-right: 18px
-      &::after
-        content: ''
-        position: absolute
-        right: -12px
-        width: 1px
-        height: 85%
-        background-color: $dgr
-        bottom: 2.5px
-        transform: rotate(25deg)
-    &_cur
-      font-family: $l-bold
-      font-size: 20px
 .banner
   position: relative
   color: #fff
+  overflow: hidden
   .container
     position: relative
   &__ttl
     font-size: 35px
+    +r(1200)
+      font-size: 22px
+      margin-bottom: 15px
   &__info
     font-size: 18px
+    +r(1200)
+      font-size: 16px
     span:first-child
       color: #848484
     &-mail
@@ -634,6 +684,11 @@ a.yel
         +ovl
         background-color: #161616
         opacity: .5
+        +r(1200)
+          width: 104%
+          left: -7px
+      +r(1200)
+        min-height: 500px
   &__slider
     &-item
       position: relative
@@ -641,6 +696,9 @@ a.yel
       display: flex
       align-items: center
       padding-left: 25px
+      +r(1200)
+        min-height: 500px
+        padding-left: 0
       &-btn
         position: absolute
         bottom: 20px
@@ -650,11 +708,16 @@ a.yel
       bottom: 240px
       left: 30px
       justify-content: flex-start
+      +r(1200)
+        bottom: 30px
+        left: 0
 .crane
   min-height: 100vh
   display: flex
   align-items: center
   overflow: hidden
+  +r(1200)
+    min-height: unset
   &_best
     background-color: #f6f6f6
   &_sixteen
@@ -768,9 +831,14 @@ a.yel
   min-height: 100vh
   display: flex
   align-items: center
+  +r(1200)
+    min-height: unset
+    text-align: center
   &__list
     max-width: 770px
   &__item
+    +r(1200)
+      margin-bottom: 25px
     &-in
       max-width: 170px
       margin-left: auto
@@ -795,10 +863,15 @@ a.yel
   display: flex
   align-items: center
   background-color: $lgr
+  +r(1200)
+    min-height: unset
+    text-align: center
   &__list
     max-width: 770px
   &__item
     min-height: 250px
+    +r(1200)
+      margin-bottom: 35px
     &-in
       position: relative
       color: #fff
@@ -838,6 +911,9 @@ a.yel
   position: relative
   +cv
   background-image: url('../img/lis__bg.jpg')
+  +r(1200)
+    min-height: unset
+    text-align: center
   &::before
     +ovl
     background-color: #161616
@@ -847,6 +923,8 @@ a.yel
   &__list
     max-width: 770px
   &__item
+    +r(1200)
+      margin-bottom: 35px
     &-in
       color: $dark
       max-width: 170px
@@ -879,6 +957,9 @@ a.yel
   min-height: 100vh
   display: flex
   align-items: center
+  +r(1200)
+    min-height: unset
+    text-align: center
   &__item
     width: 170px
     height: 140px
@@ -890,6 +971,10 @@ a.yel
     border-radius: 2px
     +ease
     margin-bottom: 20px
+    margin-left: auto
+    margin-right: auto
+    +r(1200)
+      margin-bottom: 25px
     &:hover
       background-color: #fff
       box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4)
@@ -899,33 +984,99 @@ a.yel
   display: flex
   align-items: center
   background-color: $lgr
+  +r(1200)
+    text-align: center
+    min-height: unset
 .map
   min-height: 100vh
+  +r(1200)
+    display: none
   &__wrp
-    min-height: 100vh
     position: relative
+    min-height: 100vh
+    +r(1200)
+      min-height: unset
   .ymaps-2-1-74-ground-pane
     filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale")
     filter: grayscale(100%) invert(1)
   &__cnt
+    position: absolute
     font-size: 18px
     padding: 30px 20px
     background-color: #ef8f01bf
     color: #fff
     max-width: 327px
-    position: absolute
     top: 50%
     transform: translateY(-50%)
     left: 50%
-    margin-left: calc(-970px/2)
+    margin-left: calc(-890px/2)
     a
       color: #fff
       &:hover
         opacity: .7
+    +r(1200)
+      position: relative
+      font-size: 16px
+      text-align: center
+      transform: translate(0)
+      max-width: unset
+      left: 0
+      top: 0
+      margin-left: 0
+      background-color: $yel
   &__tel
     font-size: 25px
     font-family: $l-black
+    +r(1200)
+      font-size: 18px
 .footer
   background-color: $dark
   color: #fff
-  padding: 40px 0
+  padding: 40px 0 50px
+  +r(1200)
+    padding: 30px 0
+  &__logo
+    position: relative
+    img
+      max-height: 43px
+    &::after
+      content: ''
+      position: absolute
+      width: 1px
+      height: 32px
+      top: 50%
+      right: -15px
+      background-color: $dgr
+      transform: translateY(-50%)
+      opacity: .5
+      +r(600)
+        height: 20px
+    &:hover
+      opacity: .8
+    +r(600)
+      &-text
+        font-size: 11px
+  &__soc
+    &-link
+      width: 44px
+      height: 44px
+      border: 1px solid #848484
+      border-radius: 50%
+      display: flex
+      justify-content: center
+      align-items: center
+      +ease
+      svg
+       fill: #848484
+      &:hover
+        background-color: $yel
+        border-color: $yel
+        svg
+          fill: #fff
+  .btn
+    padding-left: 10px
+    padding-right: 10px
+  +r(600)
+    text-align: center !important
+    .tar
+      text-align: center

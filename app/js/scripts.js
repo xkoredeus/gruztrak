@@ -1,28 +1,4 @@
 $(function() {
-  // $('.main-slider__cnt').owlCarousel({
-  //     nav: true,
-  //     items: 1,
-  //     loop: false,
-  //     dots: true,
-  //     navText: ["<img src='img/slider__arrow_prev.png'>", "<img src='img/slider__arrow_next.png'>"],
-  //     responsive : {
-  //       0   : {
-  //           items: 1
-  //       },
-  //       380 : {
-  //           items: 1
-  //       },
-  //       480 : {
-  //           items: 1
-  //       },
-  //       768 : {
-  //           items: 3
-  //       },
-  //       1040 : {
-  //           items: 4
-  //       }
-  //     }
-  // });
   //card slider
   var sync1 = $('.banner__bg');
   var sync2 = $('.banner__slider');
@@ -35,7 +11,6 @@ $(function() {
     loop:false,
     margin:10,
     nav: false,
-    navText: ["<img src='img/slider__arrow_prev.svg'>", "<img src='img/slider__arrow_next.svg'>"],
     dots: false,
     smartSpeed: 700,
     autoplay:false,
@@ -206,4 +181,142 @@ $(function() {
       });
     };
   });
+  //sticky header
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 4){
+    $('.header').addClass('sticky');
+    }
+    else{
+    $('.header').removeClass('sticky');
+    }
+  });
+  //current section
+  jQuery(window).scroll(function(){
+  var $sections = $('section');
+    $sections.each(function(i,el){
+    var top  = $(el).offset().top-100;
+    var bottom = top +$(el).height();
+    var scroll = $(window).scrollTop();
+    var id = $(el).attr('id');
+      if( scroll > top && scroll < bottom){
+        $('a.active').removeClass('active');
+        $('a[href="#'+id+'"]').addClass('active');
+      }
+    })
+  });
+  $('.anchor-link').on('click', function (e) {
+      e.preventDefault();
+      var id  = $(this).attr('href'),
+          top = $(id).offset().top;
+      $('body,html').animate({scrollTop: top - 60}, 800);
+  });
+  $(".header__nav").on("click","a", function (event) {
+      event.preventDefault();
+      $('.header__hamburger').removeClass('active');
+      $('body').removeClass('menu-open');
+      var id  = $(this).attr('href'),
+          top = $(id).offset().top;
+      $('body,html').animate({scrollTop: top - 60}, 800);
+  });
+  if ( $(window).width() < 1200 ) {
+    $('.about__list-in').removeClass('row').addClass('owl-carousel');
+    $('.about__item').removeClass('col-xl-3 col-sm-6 mb-3 mb-sm-0');
+    $('.about__list-in').owlCarousel({
+      nav: false,
+      autoplay: true,
+      loop: true,
+      smartSpeed: 700,
+      margin: 20,
+      dots: true,
+      responsive : {
+        0   : {
+            items: 1
+        },
+        380 : {
+            items: 1
+        },
+        600 : {
+            items: 2
+        },
+        1200 : {
+            items: 3
+        }
+      }
+    });
+    $('.serv__list-in').removeClass('row').addClass('owl-carousel');
+    $('.serv__item').removeClass('col-xl-3 col-sm-6 mb-3 mb-sm-0');
+    $('.serv__list-in').owlCarousel({
+      nav: false,
+      autoplay: true,
+      loop: true,
+      smartSpeed: 700,
+      margin: 20,
+      dots: true,
+      responsive : {
+        0   : {
+            items: 1
+        },
+        380 : {
+            items: 1
+        },
+        600 : {
+            items: 2
+        },
+        1200 : {
+            items: 3
+        }
+      }
+    });
+    $('.lis__list-in').removeClass('row').addClass('owl-carousel');
+    $('.lis__item').removeClass('col-xl-3 col-sm-6 mb-3 mb-sm-0');
+    $('.lis__list-in').owlCarousel({
+      nav: false,
+      autoplay: true,
+      loop: true,
+      smartSpeed: 700,
+      margin: 20,
+      dots: true,
+      responsive : {
+        0   : {
+            items: 1
+        },
+        380 : {
+            items: 1
+        },
+        600 : {
+            items: 2
+        },
+        1200 : {
+            items: 3
+        }
+      }
+    });
+    $('.part__list').removeClass('d-flex justify-content-between flex-wrap').addClass('owl-carousel');
+    $('.part__list').owlCarousel({
+      nav: false,
+      autoplay: true,
+      loop: true,
+      smartSpeed: 700,
+      margin: 20,
+      dots: true,
+      responsive : {
+        0   : {
+            items: 1
+        },
+        380 : {
+            items: 1
+        },
+        600 : {
+            items: 2
+        },
+        1200 : {
+            items: 3
+        }
+      }
+    });
+    $('.header__hamburger').on('click', function(e) {
+      e.preventDefault();
+      $('body').toggleClass('menu-open');
+    });
+  }
 });
