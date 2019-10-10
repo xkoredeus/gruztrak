@@ -1,7 +1,7 @@
 @import "../fonts/fonts.css"
 $dark: #2F2F2F
 $yel: #EF8F01
-$lgr: #F6F6F6
+$lgr: #f6f6f6
 $gr: #EAEAEA
 $dgr: #848484
 $tr: transparent
@@ -372,47 +372,125 @@ a.yel
       color: #fff
       background-color: $yel
       border-color: $yel
-.popup__container
-  padding: 43px 15px 0
-  background-color: transparent
-  +r(1200)
+.list
+  &_circle
+    list-style-type: none
     padding-left: 0
-    padding-right: 0
-  *,
-  *::before,
-  *::after
-    transition: .3s all ease
-  .fancybox-close-small
-    top: 0
-    right: 2px
-    padding: 0
-    svg
-      path
-        fill: #fff
-  .popup__wrp
-    display: flex
-    flex-wrap: wrap
-    align-items: center
-    justify-content: center
-    position: relative
-    max-width: 600px
-  .popup
-    width: 100%
-    height: 100%
-    position: relative
-    z-index: 2
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: flex-start
-    background-color: #fff
-    color: $dark
-    padding: 30px 25px 30px
-    text-align: center
-    &_call
-      &__wrp
-        max-width: 500px
-        width: 100%
+    li
+      padding-left: 25px
+      position: relative
+      &
+        margin-bottom: 10px
+      &::before
+        content: ''
+        position: absolute
+        width: 7px
+        height: 7px
+        background-color: $yel
+        left: 0
+        top: 6px
+        border-radius: 50%
+.fancybox-slide--html
+  padding: 0
+/* Custom animation */
+.fancybox-fx-slide-in-in.fancybox-slide--next,
+.fancybox-fx-slide-in-in.fancybox-slide--previous
+  transform: translateX(100%)
+
+.fancybox-fx-slide-in-in.fancybox-slide--current
+  transform: translateX(0)
+.popup
+  &__container
+    padding: 43px 15px 0
+    background-color: transparent
+    +r(1200)
+      padding-left: 0
+      padding-right: 0
+    *,
+    *::before,
+    *::after
+      transition: .3s all ease
+    .fancybox-close-small
+      top: 0
+      right: 2px
+      padding: 0
+      svg
+        path
+          fill: #fff
+    .popup__wrp
+      display: flex
+      flex-wrap: wrap
+      align-items: center
+      justify-content: center
+      position: relative
+      max-width: 600px
+    .popup
+      width: 100%
+      height: 100%
+      position: relative
+      z-index: 2
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: flex-start
+      background-color: #fff
+      color: $dark
+      padding: 30px 25px 30px
+      text-align: center
+      &_call
+        &__wrp
+          max-width: 500px
+          width: 100%
+.pop
+  &_crane
+    &__close
+      svg
+        path
+          +ease
+      &:hover
+        color: $yel
+        svg
+          +ease
+          path
+            stroke: $yel
+    &__wrp
+      max-width: unset
+      width: 100%
+      min-height: 100vh
+      padding: 40px 0
+      background-color: $lgr
+      +r(1200)
+        padding: 20px 0
+      .fancybox-close-small
+        display: none
+    &__slider
+      &_top
+        max-width: 90%
+        margin-left: auto
+        margin-right: auto
+        &-item
+          display: block
+          width: 100%
+          height: 400px
+          +ct
+          background-color: $lgr
+          +r(1200)
+            height: 250px
+        &.owl-carousel
+          .owl-nav
+            button.owl
+              &-prev
+                left: -25px
+              &-next
+                right: -25px
+      &_bot
+        &-item
+          width: 100%
+          height: 100px
+          display: block
+          cursor: pointer
+          +ct
+          border: 1px solid $gr
 .owl-carousel
   .owl-item
     img
@@ -719,21 +797,21 @@ a.yel
   +r(1200)
     min-height: unset
   &_best
-    background-color: #f6f6f6
+    background-color: $lgr
   &_sixteen
     background-color: #eaeaea
     .crane__slider
       &::after
         background-color: #eaeaea
   &_twentyfive
-    background-color: #f6f6f6
+    background-color: $lgr
   &_thirtyfive
     background-color: #eaeaea
     .crane__slider
       &::after
         background-color: #eaeaea
   &_fourty
-    background-color: #f6f6f6
+    background-color: $lgr
   &__slider
     &::after
       content: ''
@@ -742,7 +820,7 @@ a.yel
       top: 0
       width: 800%
       height: 100%
-      background-color: #f6f6f6
+      background-color: $lgr
     .owl
       &-stage-outer
         overflow: visible
@@ -753,7 +831,7 @@ a.yel
               border-color: $dgr
               top: -72px
               +r(1200)
-                top: -60px
+                top: -47px
               left: auto
               right: 45px
               svg
@@ -762,7 +840,7 @@ a.yel
               border-color: $dgr
               top: -72px
               +r(1200)
-                top: -60px
+                top: -47px
               svg
                 stroke: $dgr
   &__item
@@ -773,7 +851,11 @@ a.yel
     flex-direction: column
     align-items: flex-start
     padding-top: 15px
+    margin-left: auto
+    margin-right: auto
     +ease
+    +r(600)
+      margin-bottom: 25px
     &-bot
       padding: 15px
     .btn

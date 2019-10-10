@@ -104,29 +104,32 @@ $(function() {
   };
 
   $('.crane__slider').owlCarousel({
-    nav: true,
     navText: ["<svg width='7' height='12' viewBox='0 0 7 12' xmlns='http://www.w3.org/2000/svg'><path d='M6 1L1 6L6 11' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>", "<svg width='7' height='12' viewBox='0 0 7 12' xmlns='http://www.w3.org/2000/svg'><path d='M1 11L6 6L0.999999 1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>"],
     loop: false,
     smartSpeed: 700,
     autoplay: false,
     // autoplayHoverPause: true,
     margin: 20,
-    dots: false,
     responsive : {
       0   : {
-          items: 1
-      },
-      380 : {
-          items: 2,
+          items: 1,
+          nav: false,
+          dots: true,
       },
       600 : {
-          items: 3,
+          items: 2,
+          nav: true,
+          dots: false,
       },
       800 : {
           items: 3,
+          nav: true,
+          dots: false,
       },
       1200 : {
-          items: 4
+          items: 4,
+          nav: true,
+          dots: false,
       }
     }
   });
@@ -217,6 +220,99 @@ $(function() {
       var id  = $(this).attr('href'),
           top = $(id).offset().top;
       $('body,html').animate({scrollTop: top - 60}, 800);
+  });
+
+  $('[data-fancybox]').fancybox({
+    animationDuration : 600,
+    animationEffect   : 'slide-in-in',
+    touch : false
+  });
+  $('.pop_crane__close').on('click', function () {
+    $.fancybox.close();
+  });
+  //pop slider
+  var sync3 = $('.pop_crane__slider_top');
+  var sync4 = $('.pop_crane__slider_bot');
+
+  var thumbnailItemClass = '.owl-item';
+
+  var slides = sync3.owlCarousel({
+    startPosition: 0,
+    items:1,
+    loop:false,
+    margin:10,
+    nav: true,
+    navText: ["<svg width='7' height='12' viewBox='0 0 7 12' xmlns='http://www.w3.org/2000/svg'><path d='M6 1L1 6L6 11' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>", "<svg width='7' height='12' viewBox='0 0 7 12' xmlns='http://www.w3.org/2000/svg'><path d='M1 11L6 6L0.999999 1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>"],
+    dots: false,
+    smartSpeed: 700,
+    autoplay:false,
+    autoplayTimeout:6000,
+    animateIn: 'fadeIn',
+    animateOut: 'fadeOut',
+
+    autoplayHoverPause:false,
+    mouseDrag: false,
+  }).on('changed.owl.carousel', syncPosition);
+
+  function syncPosition(el) {
+    $owl_slider = $(this).data('owl.carousel');
+    var loop = $owl_slider.options.loop;
+
+    if(loop){
+      var count = el.item.count-1;
+      var current = Math.round(el.item.index - (el.item.count/2) - .5);
+      if(current < 0) {
+          current = count;
+      }
+      if(current > count) {
+          current = 0;
+      }
+    }else{
+      var current = el.item.index;
+    }
+
+    var owl_thumbnail = sync4.data('owl.carousel');
+    var itemClass = "." + owl_thumbnail.options.itemClass;
+
+
+    var thumbnailCurrentItem = sync4
+    .find(itemClass)
+    .removeClass("synced")
+    .eq(current);
+
+    thumbnailCurrentItem.addClass('synced');
+
+    if (!thumbnailCurrentItem.hasClass('active')) {
+      var duration = 300;
+      sync4.trigger('to.owl.carousel',[current, duration, true]);
+    }   
+  }
+  var thumbs = sync4.owlCarousel({
+    startPosition: 0,
+    items:4,
+    loop:false,
+    margin: 20,
+    autoplay:false,
+    nav: false,
+    dots: false,
+    animateIn: 'fadeIn',
+    animateOut: 'fadeOut',
+    autoplayHoverPause: true,
+    mouseDrag: false,
+    onInitialized: function (e) {
+      var thumbnailCurrentItem =  $(e.target).find(thumbnailItemClass).eq(this._current);
+      thumbnailCurrentItem.addClass('synced');
+    },
+  })
+  .on('click', thumbnailItemClass, function(e) {
+      e.preventDefault();
+      var duration = 300;
+      var itemIndex =  $(e.target).parents(thumbnailItemClass).index();
+      sync3.trigger('to.owl.carousel',[itemIndex, duration, true]);
+  }).on("changed.owl.carousel", function (el) {
+    var number = el.item.index;
+    $owl_slider = sync3.data('owl.carousel');
+    $owl_slider.to(number, 100, true);
   });
   if ( $(window).width() < 1200 ) {
     $('.about__list-in').removeClass('row').addClass('owl-carousel');

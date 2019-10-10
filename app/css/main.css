@@ -327,7 +327,7 @@ input[type="number"] {
   display: none;
   width: 100%;
   padding: 12px 25px;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   text-align: center;
   cursor: pointer;
   border: 1px solid #fff;
@@ -492,7 +492,7 @@ input[type="number"] {
 }
 
 .lgr {
-  color: #F6F6F6;
+  color: #f6f6f6;
 }
 
 .dgr {
@@ -617,6 +617,49 @@ a.yel:hover {
   border-color: #EF8F01;
 }
 
+.list_circle {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.list_circle li {
+  padding-left: 25px;
+  position: relative;
+}
+
+.list_circle li {
+  margin-bottom: 10px;
+}
+
+.list_circle li::before {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background-color: #EF8F01;
+  left: 0;
+  top: 6px;
+  border-radius: 50%;
+}
+
+.fancybox-slide--html {
+  padding: 0;
+}
+
+/* Custom animation */
+.fancybox-fx-slide-in-in.fancybox-slide--next,
+.fancybox-fx-slide-in-in.fancybox-slide--previous {
+  -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
+.fancybox-fx-slide-in-in.fancybox-slide--current {
+  -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+          transform: translateX(0);
+}
+
 .popup__container {
   padding: 43px 15px 0;
   background-color: transparent;
@@ -698,6 +741,85 @@ a.yel:hover {
 .popup__container .popup_call__wrp {
   max-width: 500px;
   width: 100%;
+}
+
+.pop_crane__close svg path {
+  -webkit-transition: .4s all ease;
+  -o-transition: .4s all ease;
+  transition: .4s all ease;
+}
+
+.pop_crane__close:hover {
+  color: #EF8F01;
+}
+
+.pop_crane__close:hover svg {
+  -webkit-transition: .4s all ease;
+  -o-transition: .4s all ease;
+  transition: .4s all ease;
+}
+
+.pop_crane__close:hover svg path {
+  stroke: #EF8F01;
+}
+
+.pop_crane__wrp {
+  max-width: unset;
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 0;
+  background-color: #f6f6f6;
+}
+
+@media only screen and (max-width: 1200px) {
+  .pop_crane__wrp {
+    padding: 20px 0;
+  }
+}
+
+.pop_crane__wrp .fancybox-close-small {
+  display: none;
+}
+
+.pop_crane__slider_top {
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pop_crane__slider_top-item {
+  display: block;
+  width: 100%;
+  height: 400px;
+  background-position: 50% 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #f6f6f6;
+}
+
+@media only screen and (max-width: 1200px) {
+  .pop_crane__slider_top-item {
+    height: 250px;
+  }
+}
+
+.pop_crane__slider_top.owl-carousel .owl-nav button.owl-prev {
+  left: -25px;
+}
+
+.pop_crane__slider_top.owl-carousel .owl-nav button.owl-next {
+  right: -25px;
+}
+
+.pop_crane__slider_bot-item {
+  width: 100%;
+  height: 100px;
+  display: block;
+  cursor: pointer;
+  background-position: 50% 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: 1px solid #EAEAEA;
 }
 
 .owl-carousel .owl-item img {
@@ -1330,7 +1452,7 @@ a.yel:hover {
 
 @media only screen and (max-width: 1200px) {
   .crane__slider .owl-nav button.owl-prev {
-    top: -60px;
+    top: -47px;
   }
 }
 
@@ -1345,7 +1467,7 @@ a.yel:hover {
 
 @media only screen and (max-width: 1200px) {
   .crane__slider .owl-nav button.owl-next {
-    top: -60px;
+    top: -47px;
   }
 }
 
@@ -1372,9 +1494,17 @@ a.yel:hover {
       -ms-flex-align: start;
           align-items: flex-start;
   padding-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
   -webkit-transition: .4s all ease;
   -o-transition: .4s all ease;
   transition: .4s all ease;
+}
+
+@media only screen and (max-width: 600px) {
+  .crane__item {
+    margin-bottom: 25px;
+  }
 }
 
 .crane__item-bot {
@@ -1509,7 +1639,7 @@ a.yel:hover {
   padding: 20px 10px;
   -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
           box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   border-radius: 2px;
   -webkit-transition: .4s all ease;
   -o-transition: .4s all ease;
@@ -1538,7 +1668,7 @@ a.yel:hover {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -1700,7 +1830,7 @@ a.yel:hover {
   padding: 20px 10px;
   -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
           box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   border-radius: 2px;
   -webkit-transition: .4s all ease;
   -o-transition: .4s all ease;
@@ -1784,7 +1914,7 @@ a.yel:hover {
           align-items: center;
   -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
           box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   border-radius: 2px;
   -webkit-transition: .4s all ease;
   -o-transition: .4s all ease;
@@ -1817,7 +1947,7 @@ a.yel:hover {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
 }
 
 @media only screen and (max-width: 1200px) {
