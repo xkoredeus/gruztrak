@@ -2080,6 +2080,9 @@ a.yel:hover {
 }
 
 @media only screen and (max-width: 600px) {
+  .footer__logo::after {
+    display: none;
+  }
   .footer__logo-text {
     font-size: 11px;
   }
